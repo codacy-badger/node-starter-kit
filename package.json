@@ -1,0 +1,42 @@
+{
+  "name": "node-starter-kit",
+  "version": "1.0.0",
+  "description": "A simple node starter kit",
+  "main": "index.js",
+  "repository": "https://github.com/nielse63/node-starter-kit",
+  "author": {
+    "name": "Erik Nielsen",
+    "email": "erik@312development.com",
+    "url": "https://312development.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/nielse63/node-starter-kit",
+  "keywords": [],
+  "bugs": "https://github.com/nielse63/node-starter-kit/issues",
+  "scripts": {
+    "lint": "eslint src",
+    "minify": "uglifyjs dist/node-starter-kit.js -m -c -o dist/node-starter-kit.min.js",
+    "prebuild": "yarn run lint && rm -rf dist",
+    "build": "babel src -d dist --source-maps inline",
+    "postbuild": "npm run minify",
+    "pretest": "rm -rf coverage *.log",
+    "test": "nyc mocha --opts test/unit/mocha.opts test/unit/index.js",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.24.1",
+    "chai": "^4.0.2",
+    "chai-asserttype": "^1.0.5",
+    "coveralls": "^2.13.1",
+    "eslint": "^4.1.1",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.4.2",
+    "nyc": "^11.0.3",
+    "uglify-js": "^3.0.23"
+  }
+}
