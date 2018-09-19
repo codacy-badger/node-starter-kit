@@ -15,19 +15,27 @@
   "bugs": "https://github.com/nielse63/node-starter-kit/issues",
   "scripts": {
     "lint": "eslint . --fix",
-    "test": "echo 'no tests yet' && exit"
+    "test": "jest",
+    "generate-template": "rm -rf tmp/ && hygen blueprint new --name 'project name' --description 'This is the best project in the world!' --directory tmp/project-name --authorName 'Some User' --authorEmail test@test.com --gitConfigName 'Some User' --gitConfigEmail test@test.com --githubUserName github.user"
   },
   "engines": {
     "node": ">= 10.x",
     "npm": ">= 6.x",
     "yarn": ">= 1.x"
   },
+  "dependencies": {
+    "case": "^1.5.5",
+    "commander": "^2.18.0",
+    "hygen": "^1.6.2"
+  },
   "devDependencies": {
     "eslint": "^5.2.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-unicorn": "^6.0.0",
+    "jest": "^23.6.0",
     "lint-staged": "^7.2.2",
+    "markdownlint-cli": "^0.13.0",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
@@ -41,11 +49,9 @@
     ".eslintrc.js": [
       "eslint --ignore-pattern='!.eslintrc.js' --fix",
       "git add"
+    ],
+    "*.md": [
+      "markdownlint"
     ]
-  },
-  "dependencies": {
-    "case": "^1.5.5",
-    "commander": "^2.18.0",
-    "hygen": "^1.6.2"
   }
 }
