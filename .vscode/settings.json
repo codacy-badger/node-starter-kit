@@ -31,5 +31,5 @@
   },
   "markdownlint.ignore": [
     "template/**"
-  ],
+  ]
 }

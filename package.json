@@ -1,8 +1,7 @@
 {
   "name": "node-starter-kit",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "An opinionated boilerplate for your node module projects",
-  "main": "index.js",
   "repository": "https://github.com/nielse63/node-starter-kit",
   "author": {
     "name": "Erik Nielsen",
@@ -10,13 +9,40 @@
     "url": "https://312development.com"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "homepage": "https://github.com/nielse63/node-starter-kit",
-  "keywords": [],
+  "keywords": [
+    "boilerplate",
+    "template",
+    "node-template",
+    "template-generator"
+  ],
+  "files": [
+    "lib",
+    "index.js",
+    "template",
+    "bin"
+  ],
+  "main": "index.js",
+  "bin": {
+    "nsk": "bin/cli"
+  },
+  "directories": {
+    "lib": "lib",
+    "bin": "bin",
+    "test": "__tests__"
+  },
   "bugs": "https://github.com/nielse63/node-starter-kit/issues",
   "scripts": {
     "lint": "eslint . --fix",
     "test": "jest",
-    "generate-template": "scripts/generate-template"
+    "generate-template": "scripts/generate-template",
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "engines": {
     "node": ">= 10.x",
@@ -33,6 +59,7 @@
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {
+    "all-contributors-cli": "^5.4.0",
     "eslint": "^5.2.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -41,7 +68,9 @@
     "jest": "^23.6.0",
     "lint-staged": "^7.2.2",
     "markdownlint-cli": "^0.13.0",
-    "yorkie": "^2.0.0"
+    "yorkie": "^2.0.0",
+    "travis-deploy-once": "^5.0.8",
+    "semantic-release": "^15.9.15"
   },
   "gitHooks": {
     "pre-commit": "scripts/pre-commit"
