@@ -2,27 +2,15 @@ language: node_js
 node_js:
   - "node"
 cache:
-  yarn: true
   directories:
-    - node_modules
-    - tmp/node_modules
     - ~/.npm
-dist: trusty
-before_install:
-  - npm config set spin false
-# after_success:
-#   - npm run travis-deploy-once "npm run semantic-release"
-
+notifications:
+  email: false
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
-
-# env vars
-env:
-  global:
-    - JOBS=1
-    - NODE_ENV=test
-
 script:
   - yarn lint
   - yarn test
