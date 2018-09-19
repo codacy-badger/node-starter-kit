@@ -29,6 +29,7 @@
     "ejs": "^2.6.1",
     "globby": "^8.0.1",
     "inquirer": "^6.2.0",
+    "listr": "^0.14.2",
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {

@@ -1,32 +1,17 @@
-const { exec } = require('child_process');
+// const { exec } = require('child_process');
 const processTemplates = require('./lib/process-templates');
+const installDependencies = require('./lib/install-dependencies');
+const setupGit = require('./lib/setup-git');
 
 /* eslint-disable complexity */
 module.exports = {
-  generate(options) {
-    processTemplates(options);
-    return Promise.resolve();
+  async generate(options) {
+    await processTemplates(options);
   },
-  installDependencies(directory) {
-    return new Promise((resolve, reject) => {
-      exec(`cd ${directory} && npm install`, (error) => {
-        if (error) {
-          reject(new Error(error));
-          return;
-        }
-        resolve();
-      });
-    });
+  async install({ directory }) {
+    await installDependencies({ directory });
   },
-  setupGit({ directory, authorName, authorEmail }) {
-    return new Promise((resolve, reject) => {
-      exec(`cd ${directory} && git init && git config --add user.email '${authorEmail}' && git config --add user.name '${authorName}'`, (error) => {
-        if (error) {
-          reject(new Error(error));
-          return;
-        }
-        resolve();
-      });
-    });
+  async git({ directory, author }) {
+    setupGit({ directory, author });
   },
 };
