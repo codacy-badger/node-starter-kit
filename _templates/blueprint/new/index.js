@@ -54,18 +54,18 @@ module.exports = {
         };
 
         const nextQuestions = [
-          {
-            type:    'input',
-            name:    'gitConfigName',
-            message: 'Git Config Name',
-            default: answers.authorName,
-          },
-          {
-            type:    'input',
-            name:    'gitConfigEmail',
-            message: 'Git Config Email',
-            default: answers.authorEmail,
-          },
+          // {
+          //   type:    'input',
+          //   name:    'gitConfigName',
+          //   message: 'Git Config Name',
+          //   default: answers.authorName,
+          // },
+          // {
+          //   type:    'input',
+          //   name:    'gitConfigEmail',
+          //   message: 'Git Config Email',
+          //   default: answers.authorEmail,
+          // },
           {
             type:    'input',
             name:    'githubUserName',

@@ -26,7 +26,8 @@
   "dependencies": {
     "case": "^1.5.5",
     "commander": "^2.18.0",
-    "hygen": "^1.6.2"
+    "hygen": "^1.6.2",
+    "inquirer": "^6.2.0"
   },
   "devDependencies": {
     "eslint": "^5.2.0",
