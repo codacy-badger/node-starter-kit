@@ -1,5 +1,5 @@
 ---
-to: <%= projectDirectory %>/<%= projectName %>/filename.txt
+to: <%= projectDirectory %>/filename.txt
 ---
 
 name = <%= projectName %>

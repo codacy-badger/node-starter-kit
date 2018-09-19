@@ -85,9 +85,7 @@ module.exports = {
           return {
             ...merged,
             projectName:      merged.name,
-            projectDirectory: path.normalize(
-              path.isAbsolute(merged.directory) ? merged.directory : path.resolve(process.cwd(), merged.directory),
-            ),
+            projectDirectory: path.join(merged.directory, merged.name),
           };
         });
       });
