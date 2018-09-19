@@ -72,7 +72,9 @@ module.exports = {
             message: 'Project Directory',
             default: path.join(process.cwd(), formattedAnswers.name),
             filter(input) {
-              return path.isAbsolute(input) ? input : path.resolve(process.cwd(), input);
+              return path.normalize(
+                path.isAbsolute(input) ? input : path.resolve(process.cwd(), input),
+              );
             },
           },
         ];
@@ -83,7 +85,9 @@ module.exports = {
           return {
             ...merged,
             projectName:      merged.name,
-            projectDirectory: path.isAbsolute(merged.directory) ? merged.directory : path.resolve(process.cwd(), merged.directory),
+            projectDirectory: path.normalize(
+              path.isAbsolute(merged.directory) ? merged.directory : path.resolve(process.cwd(), merged.directory),
+            ),
           };
         });
       });
