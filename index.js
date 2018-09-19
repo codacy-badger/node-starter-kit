@@ -1,2 +1,2 @@
 
-module.exports = require('./src/node-starter-kit');
+// TODO: Add cli args here!
