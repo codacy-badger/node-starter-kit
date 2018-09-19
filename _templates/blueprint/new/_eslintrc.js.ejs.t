@@ -1,7 +1,10 @@
+---
+to: <%= projectDirectory %>/.eslintrc.js
+---
 // http://eslint.org/docs/user-guide/configuring
 
 module.exports = {
-  root:    true,
+  root: true,
   extends: [
     'airbnb-base',
     'plugin:unicorn/recommended',
@@ -17,13 +20,13 @@ module.exports = {
     'unicorn/explicit-length-check': 'off',
 
     // allow debugger during development
-    'max-len':            'off',
-    'key-spacing':        ['warn', { align: 'value' }],
-    'no-console':         ['error', { allow: ['error', 'warn'] }],
-    'func-names':         'error',
-    complexity:           ['error', 5],
+    'max-len': 'off',
+    'key-spacing': ['warn', { align: 'value' }],
+    'no-console': ['error', { allow: ['error', 'warn'] }],
+    'func-names': 'error',
+    complexity: ['error', 5],
     'no-mixed-operators': ['warn'],
-    'no-debugger':        ['error'],
+    'no-debugger': ['error'],
   },
   overrides: [
     {
@@ -33,15 +36,6 @@ module.exports = {
       ],
       env: {
         jest: true,
-      },
-    },
-    {
-      files: [
-        'scripts/**/*.js',
-      ],
-      rules: {
-        'import/no-extraneous-dependencies': 'off',
-        'no-console':                        'off',
       },
     },
   ],

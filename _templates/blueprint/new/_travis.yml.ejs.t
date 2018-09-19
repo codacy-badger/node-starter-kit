@@ -1,0 +1,31 @@
+---
+to: <%= projectDirectory %>/.travis.yml
+---
+---
+language: node_js
+node_js:
+  - "node"
+dist: trusty
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+# hooks
+before_install:
+  - npm config set spin false
+install:
+  - npm ci
+after_success:
+  - npm install -g codecov
+  - codecov
+
+# env vars
+env:
+  global:
+    - JOBS=1
+    - NODE_ENV=test
+
+script:
+  - yarn lint
+  - yarn test
