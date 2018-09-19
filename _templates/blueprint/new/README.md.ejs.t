@@ -3,7 +3,7 @@ to: <%= projectDirectory %>/README.md
 ---
 # <%= projectName %>
 
-> Description of my package
+> <%= description %>
 
 [![npm](https://img.shields.io/npm/v/<%= projectName %>.svg)](https://www.npmjs.com/package/<%= projectName %>)
 [![npm](https://img.shields.io/npm/dt/<%= projectName %>.svg)](https://www.npmjs.com/package/<%= projectName %>)

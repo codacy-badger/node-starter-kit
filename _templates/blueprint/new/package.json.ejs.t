@@ -30,6 +30,7 @@ to: <%= projectDirectory %>/package.json
     "eslint-plugin-unicorn": "^6.0.0",
     "jest": "^23.6.0",
     "lint-staged": "^7.2.2",
+    "markdownlint-cli": "^0.13.0",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
@@ -39,6 +40,13 @@ to: <%= projectDirectory %>/package.json
     "*.js": [
       "eslint --fix",
       "git add"
+    ],
+    ".eslintrc.js": [
+      "eslint --ignore-pattern='!.eslintrc.js' --fix",
+      "git add"
+    ],
+    "*.md": [
+      "markdownlint"
     ]
   }
 }

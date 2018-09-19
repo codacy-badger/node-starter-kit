@@ -51,7 +51,7 @@
       "git add"
     ],
     "*.md": [
-      "markdownlint"
+      "markdownlint --config .mdlrc"
     ]
   }
 }

@@ -2,7 +2,7 @@
 to: <%= projectDirectory %>/lib/<%= projectName %>.test.js
 ---
 <%
- varname = h.inflection.camelize(projectName, true);
+ varname = h.inflection.camelize(projectName.replace(/-/g, '_'), true);
 %>
 const <%= varname %> = require('./<%= projectName %>');
 
