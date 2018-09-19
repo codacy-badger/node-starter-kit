@@ -1,6 +1,7 @@
 {
   "files.associations": {
-    ".env.*": "dotenv"
+    ".env.*": "dotenv",
+    "*.ejs.t": "ejs"
   },
   "files.exclude": {
     "**/*.log": true,
