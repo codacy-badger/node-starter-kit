@@ -1,7 +1,4 @@
 ---
-to: <%= projectDirectory %>/.github/ISSUE_TEMPLATE/feature_request.md
----
----
 name: Feature request
 about: Suggest an idea for this project
 ---

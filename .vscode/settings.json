@@ -28,5 +28,8 @@
   "[markdown]": {
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 80
-  }
+  },
+  "markdownlint.ignore": [
+    "template/**"
+  ],
 }

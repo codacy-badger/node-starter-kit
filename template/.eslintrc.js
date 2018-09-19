@@ -1,6 +1,3 @@
----
-to: <%= projectDirectory %>/.eslintrc.js
----
 // http://eslint.org/docs/user-guide/configuring
 
 module.exports = {

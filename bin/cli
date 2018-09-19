@@ -3,8 +3,10 @@ const path = require('path');
 const program = require('commander');
 const inquirer = require('inquirer');
 const { execSync } = require('child_process');
+const Case = require('case');
 const pkg = require('../package.json');
 const nsk = require('..');
+// const processTemplates = require('../lib/process-templates');
 
 
 function exec(cmd) {
@@ -42,7 +44,7 @@ const questions = [
   },
   {
     type:    'input',
-    name:    'githubUserName',
+    name:    'username',
     message: 'GitHub User Name',
     validate(input) {
       return !!input.length;
@@ -57,14 +59,15 @@ program
   .option('-d, --desc [string]', 'Project description')
   .option('-an, --author-name [string]', 'Name of the project author')
   .option('-ae, --author-email [string]', 'Email of the project author')
-  .option('-g, --username [string]', 'GitHub username')
+  .option('-u, --username [string]', 'GitHub username')
   .action((directory = process.cwd()) => {
-    const {
-      name, desc, authorName, authorEmail, username,
-    } = program;
     const dirpath = path.normalize(
       path.isAbsolute(directory) ? directory : path.resolve(process.cwd(), directory),
     );
+
+    const {
+      name, desc, authorName, authorEmail, username,
+    } = program;
     const toAsk = questions.filter((question) => {
       const key = question.name === 'description' ? 'desc' : question.name;
       return !program[key];
@@ -74,17 +77,23 @@ program
       .then(async (answers) => {
         const options = {
           name,
-          authorName,
-          authorEmail,
-          directory:      dirpath,
-          githubUserName: username,
-          description:    desc,
+          description: desc,
+          author:      {
+            name:  authorName,
+            email: authorEmail,
+          },
+          username,
+          directory: dirpath,
+          camelname: Case.camel(name),
           ...answers,
         };
+        // console.log(options);
+        // processTemplates(options);
 
         try {
-          await nsk.generateTemplate(options);
+          await nsk.generate(options);
           await nsk.installDependencies(dirpath);
+          await nsk.setupGit(options);
         } catch (error) {
           console.error({ error });
         }

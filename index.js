@@ -1,29 +1,15 @@
 const { exec } = require('child_process');
+const processTemplates = require('./lib/process-templates');
 
 /* eslint-disable complexity */
 module.exports = {
-  generateTemplate({
-    name, description, directory, authorName, authorEmail, githubUserName,
-  }) {
-    // console.log('generateTemplate');
+  generate(options) {
+    processTemplates(options);
+    return Promise.resolve();
+  },
+  installDependencies(directory) {
     return new Promise((resolve, reject) => {
-      const args = [
-        'npx hygen blueprint new',
-      ];
-      if (name) args.push(`--name '${name}'`);
-      if (directory) args.push(`--directory '${directory}'`);
-      if (description) args.push(`--description '${description}'`);
-      if (authorName) {
-        args.push(`--authorName '${authorName}'`);
-        args.push(`--gitConfigName '${authorName}'`);
-      }
-      if (authorEmail) {
-        args.push(`--authorEmail '${authorEmail}'`);
-        args.push(`--gitConfigEmail '${authorEmail}'`);
-      }
-      if (githubUserName) args.push(`--githubUserName '${githubUserName}'`);
-
-      exec(args.join(' '), (error) => {
+      exec(`cd ${directory} && npm install`, (error) => {
         if (error) {
           reject(new Error(error));
           return;
@@ -32,10 +18,9 @@ module.exports = {
       });
     });
   },
-  installDependencies(directory) {
-    // console.log('installDependencies');
+  setupGit({ directory, authorName, authorEmail }) {
     return new Promise((resolve, reject) => {
-      exec(`cd ${directory} && npm install`, (error) => {
+      exec(`cd ${directory} && git init && git config --add user.email '${authorEmail}' && git config --add user.name '${authorName}'`, (error) => {
         if (error) {
           reject(new Error(error));
           return;

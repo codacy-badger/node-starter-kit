@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+rm -rf tmp/
+
+bin/cli \
+  --name 'project-name' \
+  --desc 'project-description' \
+  --author-name 'Author Name' \
+  --author-email 'email@email.com' \
+  --username 'username' \
+  tmp/

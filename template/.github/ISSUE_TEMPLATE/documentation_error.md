@@ -1,7 +1,4 @@
 ---
-to: <%= projectDirectory %>/.github/ISSUE_TEMPLATE/documentation_error.md
----
----
 name: Documentation error
 about: An error was found in the documentation
 ---

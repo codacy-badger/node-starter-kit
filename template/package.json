@@ -1,8 +1,5 @@
----
-to: <%= projectDirectory %>/package.json
----
 {
-  "name": "<%= projectName %>",
+  "name": "<%= name %>",
   "version": "1.0.0",
   "description": "<%= description %>",
   "main": "index.js",
@@ -12,17 +9,17 @@ to: <%= projectDirectory %>/package.json
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<%= githubUserName %>/<%= projectName %>.git"
+    "url": "git+https://github.com/<%= username %>/<%= name %>.git"
   },
   "keywords": [
     "module"
   ],
-  "author": "<%= authorName %> <<%= authorEmail %>>",
+  "author": "<%= author.name %> <<%= author.email %>>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/<%= githubUserName %>/<%= projectName %>/issues"
+    "url": "https://github.com/<%= username %>/<%= name %>/issues"
   },
-  "homepage": "https://github.com/<%= githubUserName %>/<%= projectName %>#readme",
+  "homepage": "https://github.com/<%= username %>/<%= name %>#readme",
   "devDependencies": {
     "eslint": "^5.2.0",
     "eslint-config-airbnb-base": "^13.0.0",
@@ -46,7 +43,7 @@ to: <%= projectDirectory %>/package.json
       "git add"
     ],
     "*.md": [
-      "markdownlint"
+      "markdownlint --config .mdlrc"
     ]
   }
 }

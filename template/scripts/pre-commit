@@ -1,6 +1,3 @@
----
-to: <%= projectDirectory %>/scripts/pre-commit
----
 #!/usr/bin/env bash
 set -e
 

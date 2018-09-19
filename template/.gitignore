@@ -1,6 +1,3 @@
----
-to: <%= projectDirectory %>/.gitignore
----
 # Logs
 logs
 *.log
