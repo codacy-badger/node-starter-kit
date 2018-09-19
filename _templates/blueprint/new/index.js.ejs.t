@@ -2,4 +2,4 @@
 to: <%= projectDirectory %>/index.js
 ---
 
-module.exports = require('./lib/blueprint');
+module.exports = require('./lib/<%= projectName %>');

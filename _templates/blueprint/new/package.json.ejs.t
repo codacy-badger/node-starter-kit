@@ -2,9 +2,9 @@
 to: <%= projectDirectory %>/package.json
 ---
 {
-  "name": "blueprint",
+  "name": "<%= projectName %>",
   "version": "1.0.0",
-  "description": "Description of my package",
+  "description": "<%= description %>",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -12,19 +12,17 @@ to: <%= projectDirectory %>/package.json
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nielse63/blueprint.git"
+    "url": "git+https://github.com/<%= githubUserName %>/<%= projectName %>.git"
   },
   "keywords": [
-    "module",
-    "one",
-    "two"
+    "module"
   ],
-  "author": "Erik Nielsen <erik@312development.com> (https://312development.com)",
+  "author": "<%= authorName %> <<%= authorEmail %>>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nielse63/blueprint/issues"
+    "url": "https://github.com/<%= githubUserName %>/<%= projectName %>/issues"
   },
-  "homepage": "https://github.com/nielse63/blueprint#readme",
+  "homepage": "https://github.com/<%= githubUserName %>/<%= projectName %>#readme",
   "devDependencies": {
     "eslint": "^5.2.0",
     "eslint-config-airbnb-base": "^13.0.0",

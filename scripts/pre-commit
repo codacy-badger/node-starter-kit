@@ -5,9 +5,7 @@ set -e
 rm -rf \
   *.log \
   coverage/ \
-  blueprint/node_modules/ \
-  blueprint/coverage/ \
-  blueprint/*.log
+  tmp/
 
 # run lint-staged
 node_modules/.bin/lint-staged

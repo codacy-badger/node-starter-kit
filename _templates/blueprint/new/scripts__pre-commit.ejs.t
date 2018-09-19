@@ -1,5 +1,9 @@
+---
+to: <%= projectDirectory %>/scripts/pre-commit
+---
 #!/usr/bin/env bash
 set -e
 
 # run lint-staged
 node_modules/.bin/lint-staged
+

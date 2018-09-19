@@ -1,3 +1,6 @@
+---
+to: <%= projectDirectory %>/.vscode/settings.json
+---
 {
   "files.associations": {
     ".env.*": "dotenv"
@@ -29,3 +32,4 @@
     "editor.wordWrapColumn": 80
   }
 }
+

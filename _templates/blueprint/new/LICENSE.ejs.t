@@ -3,7 +3,7 @@ to: <%= projectDirectory %>/LICENSE
 ---
 MIT License
 
-Copyright (c) 2018 Erik Nielsen
+Copyright (c) <%= year %> <%= authorName %>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

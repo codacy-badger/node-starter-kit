@@ -68,6 +68,14 @@ module.exports = {
           },
           {
             type:    'input',
+            name:    'githubUserName',
+            message: 'GitHub User Name',
+            validate(input) {
+              return !!input.length;
+            },
+          },
+          {
+            type:    'input',
             name:    'directory',
             message: 'Project Directory',
             default: path.join(process.cwd(), formattedAnswers.name),
@@ -80,12 +88,18 @@ module.exports = {
         ];
         const toAskAgain = nextQuestions.filter(object => !args[object.name]);
 
+        // get the date
+        const d = new Date();
+        const year = d.getFullYear();
+
+        // ask the last few questions and return answers
         return inquirer.prompt(toAskAgain).then((nextAnswers) => {
           const merged = { ...formattedAnswers, ...nextAnswers };
           return {
             ...merged,
+            year,
             projectName:      merged.name,
-            projectDirectory: path.join(merged.directory, merged.name),
+            projectDirectory: path.join(merged.directory),
           };
         });
       });

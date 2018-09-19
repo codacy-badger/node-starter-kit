@@ -1,19 +1,13 @@
+---
+to: <%= projectDirectory %>/.github/PULL_REQUEST_TEMPLATE.md
+---
 # Description
 
 A clear and concise description of what the PR accomplishes
 
 ## Related Issues
 
-- Closes #123
-
-## Scope
-
-- [ ] Front End
-- [ ] Back End
-- [ ] Tests
-- [ ] Documentation
-- [ ] CI
-- [ ] Deployment
+- Closes [ISSUE_ID]
 
 ## Steps Completed
 
