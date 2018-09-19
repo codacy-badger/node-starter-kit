@@ -1,7 +1,7 @@
 {
   "name": "node-starter-kit",
   "version": "1.0.0",
-  "description": "A simple node starter kit",
+  "description": "An opinionated boilerplate for your node module projects",
   "main": "index.js",
   "repository": "https://github.com/nielse63/node-starter-kit",
   "author": {
@@ -14,29 +14,54 @@
   "keywords": [],
   "bugs": "https://github.com/nielse63/node-starter-kit/issues",
   "scripts": {
-    "lint": "eslint src",
-    "minify": "uglifyjs dist/node-starter-kit.js -m -c -o dist/node-starter-kit.min.js",
-    "prebuild": "yarn run lint && rm -rf dist",
-    "build": "babel src -d dist --source-maps inline",
-    "postbuild": "npm run minify",
-    "pretest": "rm -rf coverage *.log",
-    "test": "nyc mocha --opts test/unit/mocha.opts test/unit/index.js",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "prepublishOnly": "npm run build && npm test"
+    "lint": "eslint . --fix",
+    "test": "jest",
+    "generate-template": "scripts/generate-template"
+  },
+  "engines": {
+    "node": ">= 10.x",
+    "npm": ">= 6.x",
+    "yarn": ">= 1.x"
+  },
+  "dependencies": {
+    "case": "^1.5.5",
+    "commander": "^2.18.0",
+    "ejs": "^2.6.1",
+    "globby": "^8.0.1",
+    "inquirer": "^6.2.0",
+    "listr": "^0.14.2",
+    "mkdirp": "^0.5.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-env": "^1.6.0",
-    "babel-register": "^6.24.1",
-    "chai": "^4.0.2",
-    "chai-asserttype": "^1.0.5",
-    "coveralls": "^2.13.1",
-    "eslint": "^4.1.1",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-plugin-import": "^2.7.0",
-    "mocha": "^3.4.2",
-    "nyc": "^11.0.3",
-    "uglify-js": "^3.0.23"
+    "eslint": "^5.2.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-unicorn": "^6.0.0",
+    "hygen": "^1.6.2",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.2.2",
+    "markdownlint-cli": "^0.13.0",
+    "yorkie": "^2.0.0"
+  },
+  "gitHooks": {
+    "pre-commit": "scripts/pre-commit"
+  },
+  "lint-staged": {
+    "linters": {
+      "*.js": [
+        "eslint --fix",
+        "git add"
+      ],
+      ".eslintrc.js": [
+        "eslint --ignore-pattern='!.eslintrc.js' --fix",
+        "git add"
+      ],
+      "*.md": [
+        "markdownlint --config .mdlrc"
+      ]
+    },
+    "ignore": [
+      "**/template/**"
+    ]
   }
 }

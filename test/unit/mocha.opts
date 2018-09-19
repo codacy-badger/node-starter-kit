@@ -1,5 +1,0 @@
---compilers js:babel-register
---colors
---throw-deprecation
---log-timer-events
---harmony

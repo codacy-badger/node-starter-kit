@@ -1,0 +1,35 @@
+{
+  "files.associations": {
+    ".env.*": "dotenv",
+    "*.ejs.t": "ejs"
+  },
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.log*": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/coverage": true,
+  },
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    {
+      "language": "javascript",
+      "autoFix": true
+    }
+  ],
+  "[markdown]": {
+    "editor.wordWrap": "off",
+    "editor.wordWrapColumn": 80
+  },
+  "markdownlint.ignore": [
+    "template/**"
+  ],
+}
