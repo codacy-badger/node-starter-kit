@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+# clean out unwanted files/directories
+rm -rf \
+  *.log \
+  coverage/ \
+  blueprint/node_modules/ \
+  blueprint/coverage/ \
+  blueprint/*.log
+
+# run lint-staged
+node_modules/.bin/lint-staged

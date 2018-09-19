@@ -1,21 +1,29 @@
-
+---
 language: node_js
 node_js:
   - "node"
-sudo: false
 dist: trusty
 cache:
   yarn: true
   directories:
     - node_modules
-install:
-  - yarn
 
+# hooks
+before_install:
+  - npm config set spin false
+install:
+  - npm ci
+after_success:
+  - npm install -g codecov
+  - codecov
+
+# env vars
 env:
-  - TEST_COMMAND="lint"
-  - TEST_COMMAND="test"
+  global:
+    - JOBS=1
+    - NODE_ENV=test
+    - secure: p1wwmtWtS1m+XCf/gPP7id7Gl6hYZowZDDw5HFMoic04HpVr0SMA969ZxSrwGTlAUdRAR+tGWl7fPR1wUsBXnT9tdjyuczaMMHXpuHIwXdhKJGE0kgl0KgugSo2ZSb21r51xapZdZwAxS3zFtyyP1PvIVV2JVHnAJ9yiB5opxwLYNui4gW5Xym9UPr2G6C8QDa9k0/D4vR2xvP4oetL8NcLVbdtswwdoG8YhzUz6u7A6lqT30ghpo6dOWjRddaHShZDrraA8FiEao5Ub0gPgUU5NVIB0h1zeN7di0xiLwV6Fj3d1BxpwkW86JpiWeHe2MMW8lBoT5j9MRarxllr7jI70uCdXlkIOjHVUKuPkSfEOlttrtRSo1H6/bgQ2P0boplD8+PfsEEPv3qMrAyfGFe/oU3rDyONqnZWL56zej2Dkbro4OeU8O1qLNADQYg3uVn1n25+H94hGTuRdKfk+r8r61IBDZEUbcC+pxepXidqDZAvda+QaxfiD+JZyhfLkMsyA5UQ58N708L5E5uOd0+MoTJ1fdb9buzqGxlz7LpOx9/2JQqiUEq2SAAOo1KAtnZk3b2nC1Fk2ehwxr1OQTmrZyQPEdRCvbMF8K1PtW6sJrVtKs6UB/atvXTwgHrr8tX4ywjjYgJcYzKWbDpfF5teneeTxcfR8mx8BtNtDgTI=
 
 script:
-  - (eval "yarn run $TEST_COMMAND")
-
-after_success: yarn run coverage
+  - yarn lint
+  - yarn test
