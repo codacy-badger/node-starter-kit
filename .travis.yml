@@ -14,7 +14,13 @@ script:
 jobs:
   include:
     - stage: deploy
-    - name: "Deploy"
-      script: yarn release
-      on:
-        branch: master
+      name: "Deploy"
+      script: skip
+      if:
+        - branch = master
+        - type = push
+      deploy:
+        provider: script
+        script: yarn release
+        on:
+          branch: master
