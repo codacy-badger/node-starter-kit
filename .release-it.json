@@ -1,0 +1,5 @@
+{
+  "non-interactive": true,
+  "dry-run": true,
+  "verbose": true
+}

@@ -2,23 +2,19 @@ language: node_js
 node_js:
   - "node"
 cache:
+  yarn: true
   directories:
+    - node_modules
     - ~/.npm
-notifications:
-  email: false
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+
 script:
   - yarn lint
   - yarn test
 
-deploy:
-  provider: script
-  skip_cleanup: true
-  script:
-    - npx semantic-release
-  on:
-    branch: master
+jobs:
+  include:
+    - stage: deploy
+    - name: "Deploy"
+      script: yarn release
+      on:
+        branch: master
